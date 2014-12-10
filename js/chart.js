@@ -1,5 +1,5 @@
 $(function () {
-
+    
     var colors = Highcharts.getOptions().colors,
         categories = ['Showroom', 'E-commerce', ' '], // name for Missed Oppty removed so it wouldn't show on inside circle
         data = [{
@@ -121,7 +121,7 @@ $(function () {
             }]
         });
     };
-	
+    
     var salesPerf = function (d) {
         $('#chart-container2').highcharts({
             chart: {
@@ -131,8 +131,8 @@ $(function () {
                 text: 'Sales Person Breakdown'
             },
             xAxis: {
-                categories: [cats] /*'Tom', 'Dick', 'Harry', 'Jane', 'Joe', 'Missed'*/
-//				type: 'category'
+//                categories: ['Tom', 'Dick', 'Harry', 'Jane', 'Joe', 'Missed']
+				type: 'category'
             },
             yAxis: {
                 min: 0,
@@ -174,11 +174,13 @@ $(function () {
     var pieData = {};
     pieChart(pieData);
     
-    var salesPerfData = [
+    var salesPerfData = {
+        "salespeople": [
             {   "spName": "Tom",
                 "spPerf": [4, 3, 4, 2]
+//                "data": [5, 2, 3, 1]
                 },
-            {   "spName": "Dick",
+            {   "name": "Dick",
 				"spPerf": [3, 2, 4, 2]
                 }/*,
             {   name: 'Harry',
@@ -187,11 +189,10 @@ $(function () {
                 "fulfilled": 4,
                 "declined": 2
                 }*/
-        ];
+        ]
 //        "shopping": [5, 3, 4, 7, 2]
-//    };
+    };
     salesPerf(salesPerfData);
-
 });
 
 
