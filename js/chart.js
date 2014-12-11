@@ -131,8 +131,8 @@ $(function () {
                 text: 'Sales Person Breakdown'
             },
             xAxis: {
-//                categories: ['Tom', 'Dick', 'Harry', 'Jane', 'Joe', 'Missed']
-				type: 'category'
+                categories: ['Tom', 'Dick', 'Harry', 'Jane', 'Joe', 'Missed']
+//				type: 'category'
             },
             yAxis: {
                 min: 0,
@@ -154,19 +154,19 @@ $(function () {
             },
             series: [{
                 name:  'Shopping',
-                data: /*[5, 3, 4, 7, 2]*/ [['tom', 5], ['dick', 3], ['harry', 4], ['jane', 7], ['joe', 2]] /*d.salespeople*/
+                data: [5, 3, 4, 7, 2] /*d.salespeople*/
             }, {
                 name: 'In Process',
-                data: [['tom', 2], ['dick', 2], ['harry', 3], ['jane', 2], ['joe', 1]]
+                data: [2, 2, 3, 2, 1]
             }, {
                 name: 'Fulfilled',
-                data: [['tom', 3], ['dick', 4], ['harry', 4], ['jane', 2], ['joe', 5]]
+                data: [3, 4, 4, 2, 5]
             }, {
                 name: 'Declined',
-                data: [['tom', 1], ['dick', 2], ['harry', 2], ['jane', 3], ['joe', 4]]
+                data: [1, 2, 2, 3, 4]
             }, {
                 name: 'Missed Opportunities',
-                data: [0, 0, 0, 0, 0, ['missed', 6]]
+                data: [0, 0, 0, 0, 0, 6]
             }]
         });
     };
