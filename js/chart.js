@@ -1,32 +1,51 @@
 $(function () {
     
+    // Registrations chart data via json
+    var regDataAll = [
+            {   showRegs: [20, 30, 5]
+                },
+            {   ecommRegs: [8, 19]
+                }
+        ];
+		// variables for parsing json info
+		
+	var showRmData, ecommData, showRmTotal, ecommTotal, missedOps, carsSold;
+	showRmData = regDataAll[0].showRegs;
+	ecommData = regDataAll[1].ecommRegs;
+	var showRmTotal = 0;
+	for (var i in showRmData){showRmTotal += showRmData[i];}
+	var ecommTotal = 0;
+	for (var i in ecommData){ecommTotal += ecommData[i];}
+	var carsSold = document.getElementById("carsSold").value;
+	var missedOps = carsSold-showRmTotal;
+
     var colors = Highcharts.getOptions().colors,
         categories = ['Showroom', 'E-commerce', ' '], // name for Missed Oppty removed so it wouldn't show on inside circle
         data = [{
-            y: 55,
+            y: showRmTotal,
             color: colors[0],
             drilldown: {
                 name: 'Showroom status',
                 categories: ['Showroom:<br/>Orders', 'Showroom:<br/>Still Shopping', 'Showroom:<br/>Declined'],
-                data: [20, 30, 5],
+                data: showRmData,
                 color: colors[0]
             }
-        }, {
-            y: 27,
+        		}, {
+            y: ecommTotal,
             color: colors[1],
             drilldown: {
                 name: 'E-commerce status',
                 categories: ['E-comm:<br/>Orders', 'E-comm:<br/>Still Shopping'],
-                data: [8, 19],
+                data: ecommData,
                 color: colors[1]
             }
         }, {
-            y: 8,
+            y: missedOps,
             color: colors[2],
             drilldown: {
                 name: 'Missed Opportunity',
                 categories: ['Missed Opportunity'],
-                data: [8],
+                data: [missedOps],
                 color: colors[2]
             }
         }
@@ -62,7 +81,8 @@ $(function () {
         }
     }
 
-    var pieChart = function (data) {
+    	// Registration chart
+    var regChart = function (data) {
         // Create the chart
         $('#chart-container1').highcharts({
             chart: {
@@ -121,8 +141,37 @@ $(function () {
             }]
         });
     };
+	
+    // Sales Performance chart
     
-    var salesPerf = function (d) {
+	var salesPerf = function (data) {
+		// variables for parsing json info
+		var cats = [];
+		for (var i = 0, max = salesPerfData.length; i < max; i++)
+	{
+		cats.push(salesPerfData[i].spName);
+	};
+		var shopData = [];
+		for (var i = 0, max = salesPerfData.length; i < max; i++)
+	{
+		shopData.push(salesPerfData[i].spPerf[0]);
+	};
+		var procData = [];
+		for (var i = 0, max = salesPerfData.length; i < max; i++)
+	{
+		procData.push(salesPerfData[i].spPerf[1]);
+	};
+		var fillData = [];
+		for (var i = 0, max = salesPerfData.length; i < max; i++)
+	{
+		fillData.push(salesPerfData[i].spPerf[2]);
+	};
+		var declData = [];
+		for (var i = 0, max = salesPerfData.length; i < max; i++)
+	{
+		declData.push(salesPerfData[i].spPerf[3]);
+	};
+		// Begin chart
         $('#chart-container2').highcharts({
             chart: {
                 type: 'bar'
@@ -131,8 +180,9 @@ $(function () {
                 text: 'Sales Person Breakdown'
             },
             xAxis: {
-                categories: ['Tom', 'Dick', 'Harry', 'Jane', 'Joe', 'Missed']
+//                categories: ['Tom', 'Dick', 'Harry', 'Jane', 'Joe', 'Missed']
 //				type: 'category'
+					categories: cats
             },
             yAxis: {
                 min: 0,
@@ -153,46 +203,67 @@ $(function () {
                 }
             },
             series: [{
-                name:  'Shopping',
-                data: [5, 3, 4, 7, 2] /*d.salespeople*/
+                name: 'Shopping',
+                data: shopData
             }, {
                 name: 'In Process',
-                data: [2, 2, 3, 2, 1]
+                data: procData
             }, {
                 name: 'Fulfilled',
-                data: [3, 4, 4, 2, 5]
+                data: fillData
             }, {
                 name: 'Declined',
-                data: [1, 2, 2, 3, 4]
-            }, {
-                name: 'Missed Opportunities',
-                data: [0, 0, 0, 0, 0, 6]
+                data: declData
             }]
         });
     };
     
-    var pieData = {};
-    pieChart(pieData);
-    
-    var salesPerfData = {
-        "salespeople": [
-            {   "spName": "Tom",
-                "spPerf": [4, 3, 4, 2]
-//                "data": [5, 2, 3, 1]
+    // Sales Performance chart data
+    var salesPerfData = [
+            {   spName: "Tom",
+			 	spPerf: [4, 3, 4, 2]
                 },
-            {   "name": "Dick",
-				"spPerf": [3, 2, 4, 2]
+            {   spName: "Dick",
+				spPerf: [3, 2, 4, 2]
+                },
+            {   spName: "Harry",
+				spPerf: [4, 3, 4, 5]
+                },
+            {   spName: "Jane",
+				spPerf: [7, 2, 2, 3]
+                },
+            {   spName: "Joe",
+				spPerf: [2, 1, 5, 4]
                 }/*,
-            {   name: 'Harry',
-                "shopping": 4,
-                "inprocess": 3,
-                "fulfilled": 4,
-                "declined": 2
+            {   spName: "Joe2",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe3",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe4",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe5",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe6",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe7",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe8",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe9",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe1",
+				spPerf: [2, 1, 5, 4]
                 }*/
-        ]
-//        "shopping": [5, 3, 4, 7, 2]
-    };
+        ];
     salesPerf(salesPerfData);
+    regChart(regDataAll);
+	
 });
-
-
