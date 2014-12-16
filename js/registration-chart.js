@@ -1,5 +1,6 @@
   
 $(function () {
+	'use strict';
     
     // Registrations chart data via json
     var regDataAll = [
@@ -8,11 +9,9 @@ $(function () {
             {   ecommRegs: [8, 19]
                 }
         ];
-		// variables for parsing json info
+	// variables for parsing json info
 		
-	var showRmData, ecommData, showRmTotal, ecommTotal, missedOps;
-	showRmData = regDataAll[0].showRmRegs;
-	ecommData = regDataAll[1].ecommRegs;
+	var  showRmData = regDataAll[0].showRmRegs, ecommData = regDataAll[1].ecommRegs;
 	var showRmTotal = 0;
 	for (var i in showRmData){showRmTotal += showRmData[i];}
 	var ecommTotal = 0;
@@ -85,7 +84,7 @@ $(function () {
     	// Registration chart
     var regChart = function (data) {
         // Create the chart
-        $('#chart-container1').highcharts({
+        $('#reg-chart-container').highcharts({
             chart: {
                 type: 'pie'
             },
@@ -143,128 +142,6 @@ $(function () {
         });
     };
 	
-    // Sales Performance chart
-    
-	var salesPerf = function (data) {
-		// variables for parsing json info
-		var cats = [];
-		for (var i = 0, max = salesPerfData.length; i < max; i++)
-	{
-		cats.push(salesPerfData[i].spName);
-	};
-		var shopData = [];
-		for (var i = 0, max = salesPerfData.length; i < max; i++)
-	{
-		shopData.push(salesPerfData[i].spPerf[0]);
-	};
-		var procData = [];
-		for (var i = 0, max = salesPerfData.length; i < max; i++)
-	{
-		procData.push(salesPerfData[i].spPerf[1]);
-	};
-		var fillData = [];
-		for (var i = 0, max = salesPerfData.length; i < max; i++)
-	{
-		fillData.push(salesPerfData[i].spPerf[2]);
-	};
-		var declData = [];
-		for (var i = 0, max = salesPerfData.length; i < max; i++)
-	{
-		declData.push(salesPerfData[i].spPerf[3]);
-	};
-		// Begin chart
-        $('#chart-container2').highcharts({
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: 'Sales Person Breakdown'
-            },
-            xAxis: {
-//                categories: ['Tom', 'Dick', 'Harry', 'Jane', 'Joe', 'Missed']
-//				type: 'category'
-					categories: cats
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Total Registrations'
-                }
-            },
-            credits: {
-                enabled: false
-            },
-            legend: {
-                reversed: true,
-                width: 220
-            },
-            plotOptions: {
-                series: {
-                    stacking: 'normal'
-                }
-            },
-            series: [{
-                name: 'Shopping',
-                data: shopData
-            }, {
-                name: 'In Process',
-                data: procData
-            }, {
-                name: 'Fulfilled',
-                data: fillData
-            }, {
-                name: 'Declined',
-                data: declData
-            }]
-        });
-    };
-    
-    // Sales Performance chart data
-    var salesPerfData = [
-            {   spName: "Tom",
-			 	spPerf: [4, 3, 4, 2]
-                },
-            {   spName: "Dick",
-				spPerf: [3, 2, 4, 2]
-                },
-            {   spName: "Harry",
-				spPerf: [4, 3, 4, 5]
-                },
-            {   spName: "Jane",
-				spPerf: [7, 2, 2, 3]
-                },
-            {   spName: "Joe",
-				spPerf: [2, 1, 5, 4]
-                }/*,
-            {   spName: "Joe2",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe3",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe4",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe5",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe6",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe7",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe8",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe9",
-				spPerf: [2, 1, 5, 4]
-                },
-            {   spName: "Joe1",
-				spPerf: [2, 1, 5, 4]
-                }*/
-        ];
-    salesPerf(salesPerfData);
     regChart(regDataAll);
 	
 });
