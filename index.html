@@ -12,7 +12,135 @@
       <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/drilldown.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
-
+<script type="text/javascript">
+	$(document).ready(function () {
+		var regDataAll = [
+            {   showRmRegs: [20, 30, 5]
+                },
+            {   ecommRegs: [8, 19]
+                }
+        ];
+		igRegChart.load(regDataAll);
+		    // Sales Performance chart data
+		var salesPerfDataAll = [
+            {   spName: "Tom",
+			 	spPerf: [4, 3, 4, 2]
+                },
+            {   spName: "Dick",
+				spPerf: [3, 2, 4, 2]
+                },
+            {   spName: "Harry",
+				spPerf: [4, 3, 4, 5]
+                },
+            {   spName: "Jane",
+				spPerf: [7, 2, 2, 3]
+                },
+            {   spName: "Joe",
+				spPerf: [2, 1, 5, 4]
+                }/*,
+            {   spName: "Joe2", 
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe3",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe4",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe5",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe6",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe7",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe8",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe9",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe1",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe3",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe4",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe5",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe6",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe7",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe8",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe9",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe1",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe3",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe4",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe5",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe6",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe7",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe8",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe9",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe1",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe3",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe4",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe5",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe6",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe7",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe8",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe9",
+				spPerf: [2, 1, 5, 4]
+                },
+            {   spName: "Joe1",
+				spPerf: [2, 1, 5, 4]
+                }*/
+        ];
+		igSalesChart.load(salesPerfDataAll);
+	});
+</script>
  <style>
 fieldset {
 border: 0;
@@ -34,6 +162,7 @@ height: 200px;
 <body>
     <div id=wrapper>
     <div id="container">
+<!--
     <div id="form">
         <form>
 <fieldset>
@@ -54,20 +183,10 @@ height: 200px;
 </fieldset>
 </form>
     </div>
+-->
     <div id="reg-chart-container"></div>
     <div id="salesperson-reg-chart-container"></div>
     </div>
     </div>
-<!--    <script>
-        $('#button').click(function () {
-            var carsSoldEntered = $( "#carsSold" ).text();
-			window.chart = new Highcharts.Chart({
-                chart: {
-                    renderTo: "chart-container1"
-                };
-			var carsSold = carsSoldEntered;
-            });
-		});
-	</script>-->
 </body>
 </html>

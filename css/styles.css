@@ -17,7 +17,7 @@
 
 #salesperson-reg-chart-container {
     float: right;
-    height: 400px !important;
+   height: 400px /* !important;*/
     margin: 0;
     overflow-x: hidden;
     overflow-y: auto;

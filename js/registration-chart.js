@@ -1,23 +1,13 @@
-  
-$(function () {
-	'use strict';
-    
-    // Registrations chart data via json
-    var regDataAll = [
-            {   showRmRegs: [20, 30, 5]
-                },
-            {   ecommRegs: [8, 19]
-                }
-        ];
+var igRegChart = (function () {
+	var loadRegChart = function (regDataAll) {
 	// variables for parsing json info
-		
-	var  showRmData = regDataAll[0].showRmRegs, ecommData = regDataAll[1].ecommRegs;
-	var showRmTotal = 0;
-	for (var i in showRmData){showRmTotal += showRmData[i];}
-	var ecommTotal = 0;
-	for (var i in ecommData){ecommTotal += ecommData[i];}
-	var carsSold = 0;
-	var missedOps = carsSold-showRmTotal;
+		var  showRmData = regDataAll[0].showRmRegs, ecommData = regDataAll[1].ecommRegs;
+		var showRmTotal = 0;
+		for (var i in showRmData){showRmTotal += showRmData[i];}
+		var ecommTotal = 0;
+		for (var i in ecommData){ecommTotal += ecommData[i];}
+		var carsSold = 0;
+		var missedOps = carsSold-showRmTotal;
 
     var colors = Highcharts.getOptions().colors,
         categories = ['Showroom', 'E-commerce', ' '], // name for Missed Oppty removed so it wouldn't show on inside circle
@@ -143,5 +133,9 @@ $(function () {
     };
 	
     regChart(regDataAll);
-	
-});
+
+	};
+	return {
+	load : loadRegChart
+	};
+	})();
